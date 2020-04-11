@@ -27,7 +27,7 @@ Clarification:
 
 
 # 这个方法比较暴力
-class Solution:
+class Solution1:
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
@@ -40,3 +40,15 @@ class Solution:
             else:
                 i += 1
         return len(nums)
+
+
+# 双指针，原地操作
+class Solution2:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        cnt = 0
+        for i in range(1, len(nums)):
+            if nums[cnt] != nums[i]:
+                cnt += 1
+                nums[cnt] = nums[i]
+        nums = nums[:cnt + 1]
+        return cnt + 1

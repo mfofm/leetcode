@@ -11,6 +11,7 @@ Note: In the string, each word is separated by single space and there will not b
 """
 
 
+# Str[::-1] 字符串反序
 class Solution:
     def reverseWords(self, s):
         """

@@ -22,7 +22,7 @@ Could you do it in-place with O(1) extra space?
 """
 
 
-class Solution:
+class Solution1:
     def rotate(self, nums, k):
         """
         :type nums: List[int]
@@ -32,3 +32,17 @@ class Solution:
         for i in range(0, k):
             a = nums.pop()
             nums.insert(0, a)
+
+# 利用Python数组切片
+class Solution2:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        lenth = len(nums)
+        if lenth <= 1 or lenth == k:
+            pass
+        elif k > lenth:
+            nums[:k % lenth], nums[k % lenth:] = nums[- k % lenth:], nums[:lenth - k % lenth]
+        else:
+            nums[:k], nums[k:] = nums[-k:], nums[:lenth - k]
