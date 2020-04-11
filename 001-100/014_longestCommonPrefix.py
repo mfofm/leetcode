@@ -15,7 +15,7 @@ Note:
 """
 
 
-class Solution:
+class Solution1:
     def longestCommonPrefix(self, strs):
         """
         :type strs: List[str]
@@ -30,3 +30,16 @@ class Solution:
                     return strs[0][:end]
             end = end + 1
         return strs[0][:end]
+
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        res = ""
+        if len(strs) == 0:
+            return ""
+        for each in zip(*strs):
+            if len(set(each)) == 1:
+                res += each[0]
+            else:
+                return res
+        return res

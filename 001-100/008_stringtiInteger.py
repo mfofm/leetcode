@@ -41,7 +41,7 @@ Example 5:
 
 
 # 这个解法很不好感觉
-class Solution:
+class Solution1:
     def myAtoi(self, str):
         """
         :type str: str
@@ -73,3 +73,55 @@ class Solution:
         if ret < MaxInt * -1 :
             return MaxInt * - 1 - 1 
         return ret
+
+
+
+class Solution2:
+    def myAtoi(self, str: str) -> int:
+        y = str.split(' ')
+        str_temp = ''
+        for item in y:
+            if item is not '':
+                str_temp = item
+                break
+        if str_temp == '':
+            return 0
+        if str_temp[0].isalpha():
+            return 0
+        result = ''
+        if str_temp[0] == '-':
+            for i in str_temp[1:]:
+                if i.isdigit():
+                    result += i
+                else:
+                    break
+            if result == '':
+                return 0
+            else:
+                x = -(int(result))    
+        elif str_temp[0] == '+':
+            for i in str_temp[1:]:
+                if i.isdigit():
+                    result += i
+                else:
+                    break
+            if result == '':
+                return 0
+            else:
+                x = int(result)
+        else:
+            for i in str_temp:
+                if i.isdigit():
+                    result += i
+                else:
+                    break
+            if result == '':
+                return 0
+            else:
+                x = int(result)
+        if x < -2147483648:
+            return -2147483648
+        elif x > 2147483647:
+            return 2147483647
+        else:
+            return x
